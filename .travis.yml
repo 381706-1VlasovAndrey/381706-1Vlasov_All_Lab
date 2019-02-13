@@ -8,7 +8,5 @@ before_script:
 script:
   - cmake ../381706-1Vlasov_All_Lab
   - make -j
-  - cd ./bin/
-  - ./381706-1Vlasov_All_Lab
 notifications:
   email: false
