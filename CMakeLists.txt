@@ -29,8 +29,8 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/gtest)
 add_subdirectory(gtest)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ExceptionLib)
-add_subdirectory(ExceptionLib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ExceptionsLib)
+add_subdirectory(ExceptionsLib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/VectorLib)
 add_subdirectory(Vector)
