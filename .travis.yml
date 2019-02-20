@@ -12,5 +12,7 @@ script:
   - ./QueueTest/QueueTest
   - ./VectorTest/VectorTest
   - ./MatrixTest/MatrixTest
+  - ./ArrListTest/ArrListTest
+  - ./ListTest/ListTest
 notifications:
   email: false
