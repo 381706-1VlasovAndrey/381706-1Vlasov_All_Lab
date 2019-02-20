@@ -25,7 +25,7 @@ int GetPrt(const char op)
 bool IsOp(char a)
 {
   return (a == '+' || a == '-' || a == '*' || a == '/' || a == '(' || a == ')');
-}/
+}
 
 TQueue<char> ConvertToPol(TString s)
 {
