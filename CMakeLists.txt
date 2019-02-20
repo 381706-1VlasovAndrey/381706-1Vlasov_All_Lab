@@ -37,6 +37,10 @@ set(StackList StackList)
 set(StackListLib StackListLib)
 set(StackListTest StackListTest)
 
+set(Polynomial Polynomial)
+set(PolynomialLib PolynomialLib)
+set(PolynomialTest PolynomialTest)
+
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
@@ -91,6 +95,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/StackListLib)
 add_subdirectory(StackList)
 add_subdirectory(StackListLib)
 add_subdirectory(StackListTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/PolynomialLib)
+add_subdirectory(Polynomial)
+add_subdirectory(PolynomialLib)
+add_subdirectory(PolynomialTest)
 
 
 
