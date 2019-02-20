@@ -28,41 +28,41 @@ template <class T>
 TMatrix<T>::TMatrix(int s) :TVector<TVector<T> >(s)
 {
   if (s <= 0 || s > 1000)
-    throw MyException("error size");
+    throw MyException("Wrong size");
   for (int i = 0; i < s; i++)
     this->vec[i] = TVector<T>(s - i);
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 TMatrix<T>::TMatrix(const TMatrix<T> &mt) :TVector<TVector<T> >(mt)
-{}//-------------------------------------------------------------------------
+{}
 
 template <class T>
 TMatrix<T>::TMatrix(const TVector<TVector<T> > &mt) : TVector<TVector<T> >(mt)
-{}//-------------------------------------------------------------------------
+{}
 
 template <class T>
 TMatrix<T>::~TMatrix()
-{}//-------------------------------------------------------------------------
+{}
 
 template <class T >
 bool TMatrix<T>::operator==(const TMatrix<T> &mt) const
 {
   return TVector<TVector<T> >::operator==(mt);
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 bool TMatrix<T>::operator!=(const TMatrix<T> &mt) const
 {
   return TVector<TVector<T> >::operator!=(mt);
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TMatrix<T>& TMatrix<T>::operator=(const TMatrix<T> &mt)
 {
   TVector<TVector<T> >::operator=(mt);
   return *this;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 TMatrix<T> TMatrix<T>::operator+(const TMatrix<T> &mt)
@@ -70,8 +70,8 @@ TMatrix<T> TMatrix<T>::operator+(const TMatrix<T> &mt)
   if (this->size == mt.size)
     return TVector<TVector<T> >::operator+(mt);
   else
-    throw MyException("error size operand");
-}//-------------------------------------------------------------------------
+    throw MyException("Wrong size operand");
+}
 
 template <class T>
 TMatrix<T> TMatrix<T>::operator-(const TMatrix<T> &mt)
@@ -79,14 +79,14 @@ TMatrix<T> TMatrix<T>::operator-(const TMatrix<T> &mt)
   if (this->size == mt.size)
     return TVector<TVector<T> >::operator-(mt);
   else
-    throw MyException("error size operand");
-}//-------------------------------------------------------------------------
+    throw MyException("Wrong size operand");
+}
 
 template <class T>
 TMatrix<T> TMatrix<T>::operator*(const TMatrix<T> &mt)
 {
   if (this->size != mt.size)
-    throw MyException("error size operand");
+    throw MyException("Wrong size operand");
   TMatrix <T> rez(this->size);
   for (int i = 0; i < this->size; i++)
     for (int j = i; j < this->size; j++)
@@ -95,13 +95,13 @@ TMatrix<T> TMatrix<T>::operator*(const TMatrix<T> &mt)
         rez.vec[i][j - i] += this->vec[i][k - i] * mt.vec[k][j - k];
     }
   return rez;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 TMatrix<T> TMatrix<T>::operator/(const TMatrix<T> &mt)
 {
   if (this->size != mt.size)
-    throw MyException("error size operand");
+    throw MyException("Wrong size operand");
   TMatrix <T> copy(*this);
   TMatrix <T> rez(this->size);
   TMatrix <T> copyMt(mt);
@@ -122,7 +122,7 @@ TMatrix<T> TMatrix<T>::operator/(const TMatrix<T> &mt)
     }
   rez = copy * rez;
   return rez;
-}//-------------------------------------------------------------------------
+}
 
 
 template <class ValType2>
@@ -131,7 +131,7 @@ istream& operator>>(istream &in, TMatrix<ValType2> &mt)
   for (int i = 0; i < mt.size; i++)
     in >> mt.vec[i];
   return in;
-}//-------------------------------------------------------------------------
+}
 
 template <class ValType2>
 ostream & operator<<(ostream &out, const TMatrix<ValType2> &mt)
@@ -143,4 +143,4 @@ ostream & operator<<(ostream &out, const TMatrix<ValType2> &mt)
     out << mt.vec[i] << endl;
   }
   return out;
-}//-------------------------------------------------------------------------
+}

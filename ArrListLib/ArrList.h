@@ -33,7 +33,7 @@ template <class T>
 TArrList<T>::TArrList(int _size) : freeElem(_size)
 {
   if (_size <= 0)
-    throw MyException("error. False size list");
+    throw MyException("Wrong size list");
   size = _size;
   count = 0;
   start = -1;
@@ -47,7 +47,7 @@ TArrList<T>::TArrList(int _size) : freeElem(_size)
     predInd[i] = -2;
     freeElem.Put(i);
   }
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 TArrList<T>::TArrList(TArrList<T> &A)
@@ -66,7 +66,7 @@ TArrList<T>::TArrList(TArrList<T> &A)
     nextInd[i] = A.nextInd[i];
     predInd[i] = A.predInd[i];
   }
-}//-----------------------------------------------------------------
+}
 
 template<class T>
 inline TArrList<T>::~TArrList()
@@ -74,15 +74,15 @@ inline TArrList<T>::~TArrList()
   delete[] mas;
   delete[] nextInd;
   delete[] predInd;
-}//-----------------------------------------------------------------
+}
 
 template<class T>
 void TArrList<T>::Put(int n, T elem)
 {
   if (IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   if (n < 1 || n > count - 1)
-    throw MyException("error. Uncurrent index");
+    throw MyException("Wrong index");
   int ifree = freeElem.Get();
   mas[ifree] = elem;
   int one = start;
@@ -98,15 +98,15 @@ void TArrList<T>::Put(int n, T elem)
   predInd[ifree] = one;
   predInd[two] = ifree;
   count++;
-}//-----------------------------------------------------------------
+}
 
 template<class T>
 T TArrList<T>::Get(int n)
 {
   if (IsEmpty())
-    throw MyException("error. List is empty");
+    throw MyException("List is empty");
   if (n < 1 || n > count - 1)
-    throw MyException("error. Uncurrent index");
+    throw MyException("Wrong index");
   int ind = start;
   for (int i = 0; i < n; i++)
     ind = nextInd[ind];
@@ -116,13 +116,13 @@ T TArrList<T>::Get(int n)
   freeElem.Put(ind);
   count--;
   return temp;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 void TArrList<T>::PutStart(T elem)
 {
   if (IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   int ifree = freeElem.Get();
   mas[ifree] = elem;
   nextInd[ifree] = start;
@@ -132,13 +132,13 @@ void TArrList<T>::PutStart(T elem)
     end = ifree;
   start = ifree;
   count++;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 void TArrList<T>::PutEnd(T elem)
 {
   if (IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   int ifree = freeElem.Get();
   mas[ifree] = elem;
   if (end != -1)
@@ -151,13 +151,13 @@ void TArrList<T>::PutEnd(T elem)
   predInd[ifree] = end;
   end = ifree;
   count++;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 T TArrList<T>::GetStart()
 {
   if (IsEmpty())
-    throw MyException("error. List is empty");
+    throw MyException("List is empty");
   T elem = mas[start];
   freeElem.Put(start);
   int newstart = nextInd[start];
@@ -167,13 +167,13 @@ T TArrList<T>::GetStart()
   count--;
   start = newstart;
   return elem;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 T TArrList<T>::GetEnd()
 {
   if (IsEmpty())
-    throw MyException("error. List is empty");
+    throw MyException("List is empty");
   T elem = mas[end];
   int newFinish = predInd[end];
   predInd[end] = nextInd[end] = -2;
@@ -185,7 +185,7 @@ T TArrList<T>::GetEnd()
     start = -1;
   count--;
   return elem;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 bool TArrList<T>::IsFull()
@@ -193,7 +193,7 @@ bool TArrList<T>::IsFull()
   if (count == size)
     return true;
   return false;
-}//-----------------------------------------------------------------
+}
 
 template <class T>
 bool TArrList<T>::IsEmpty()
@@ -201,7 +201,7 @@ bool TArrList<T>::IsEmpty()
   if (count == 0)
     return true;
   return false;
-}//-----------------------------------------------------------------
+}
 
 template<class T>
 inline void TArrList<T>::Print()
@@ -212,4 +212,4 @@ inline void TArrList<T>::Print()
     cout << mas[it] << " ";
     it = nextInd[it];
   }
-}//-----------------------------------------------------------------
+}

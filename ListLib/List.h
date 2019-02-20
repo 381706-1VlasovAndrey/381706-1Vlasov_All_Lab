@@ -31,7 +31,7 @@ TList<T>::TList()
 {
   begin = 0;
   count = 0;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 TList<T>::TList(TList<T> &L)
@@ -52,7 +52,7 @@ TList<T>::TList(TList<T> &L)
       b = b->GetNext();
     }
   }
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 TList<T>::~TList()
@@ -63,21 +63,21 @@ TList<T>::~TList()
     begin = begin->GetNext();
     delete temp;
   }
-}//-------------------------------------------------------------------------
+}
 
 template<class T>
 int TList<T>::GetSize()
 {
   return count;
-}//-------------------------------------------------------------------------
+}
 
 template<class T>
 void TList<T>::Put(int _n, T elem)
 {
   if (this->IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   if (_n < 1 || _n > count - 1)
-    throw MyException("error. Uncurrent index");
+    throw MyException("Wrong index");
   else
   {
     int i = 0;
@@ -91,15 +91,15 @@ void TList<T>::Put(int _n, T elem)
     a->SetNext(temp);
     count++;
   }
-}//-------------------------------------------------------------------------
+}
 
 template<class T>
 T TList<T>::Get(int _n)
 {
   if (this->IsEmpty())
-    throw MyException("error. List is empty");
+    throw MyException("List is empty");
   if (_n < 1 || _n > count - 1)
-    throw MyException("error. Uncurrent index");
+    throw MyException("Wrong index");
   else
   {
     int i = 0;
@@ -117,13 +117,13 @@ T TList<T>::Get(int _n)
     delete b;
     return temp;
   }
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 void TList<T>::PutBegin(T A)
 {
   if (this->IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   if (begin == 0)
   {
     TElem<T>* temp = new TElem<T>(A, 0);
@@ -135,13 +135,13 @@ void TList<T>::PutBegin(T A)
     begin = temp;
   }
   count++;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 void TList<T>::PutEnd(T A)
 {
   if (this->IsFull())
-    throw MyException("error. List is full");
+    throw MyException("List is full");
   if (begin != 0)
   {
     TElem<T>* a = begin;
@@ -152,13 +152,13 @@ void TList<T>::PutEnd(T A)
   else
     begin = new TElem<T>(A, 0);
   count++;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 T TList<T>::GetBegin()
 {
   if (IsEmpty())
-    throw MyException("error. List is empty!");
+    throw MyException("List is empty!");
   else
   {
     TElem<T>* a = begin;
@@ -168,13 +168,13 @@ T TList<T>::GetBegin()
     count--;
     return temp;
   }
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 T TList<T>::GetEnd()
 {
   if (IsEmpty())
-    throw MyException("error. List is Empty!");
+    throw MyException("List is Empty!");
   else
   {
     count--;
@@ -200,7 +200,7 @@ T TList<T>::GetEnd()
       return temp;
     }
   }
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 bool TList<T>::IsFull()
@@ -221,7 +221,7 @@ bool TList<T>::IsFull()
     return 0;
   }
   return true;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 bool TList<T>::IsEmpty()
@@ -229,13 +229,13 @@ bool TList<T>::IsEmpty()
   if (begin == 0)
     return 1;
   return 0;
-}//-------------------------------------------------------------------------
+}
 
 template<class T>
 inline void TList<T>::Print()
 {
   if (begin == 0)
-    throw MyException("Error! List is Empty.");
+    throw MyException("List is Empty!");
   else
   {
     TElem<T>* a = begin;
@@ -247,4 +247,4 @@ inline void TList<T>::Print()
     cout << a->GetData() << " ";
   }
 
-}//-------------------------------------------------------------------------
+}

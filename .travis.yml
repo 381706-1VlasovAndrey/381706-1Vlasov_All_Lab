@@ -14,5 +14,7 @@ script:
   - ./MatrixTest/MatrixTest
   - ./ArrListTest/ArrListTest
   - ./ListTest/ListTest
+  - ./StackListTest/StackListTest
+  - ./MultiStackTest/MultiStackTest
 notifications:
   email: false

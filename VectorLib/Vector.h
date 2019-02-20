@@ -37,7 +37,7 @@ template <class T>
 TVector<T>::TVector(int s)
 {
 	if (s < 0)
-		throw MyException("error size");
+		throw MyException("Wrong size");
   else
     if (s == 0) 
     {
@@ -51,7 +51,7 @@ TVector<T>::TVector(int s)
       for (int i = 0; i < size; i++)
         vec[i] = 0;
     }
-} //-------------------------------------------------------------------------
+} 
 
 template <class T> 
 TVector<T>::TVector(const TVector<T> &V) 
@@ -65,7 +65,7 @@ TVector<T>::TVector(const TVector<T> &V)
     for (int i = 0; i < size; i++)
       vec[i] = V.vec[i];
   }
-} //-------------------------------------------------------------------------
+} 
 
 template<class T>
 TVector<T>::~TVector() 
@@ -76,13 +76,13 @@ TVector<T>::~TVector()
     delete[] vec;
     vec = NULL;
   }
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 int TVector<T>::GetSize() const
 { 
   return size; 
-}//-------------------------------------------------------------------------
+}
 
 template <class T> 
 T& TVector<T>::operator[](int pos)
@@ -90,8 +90,8 @@ T& TVector<T>::operator[](int pos)
 	if (pos >= 0 && pos < size)
 		return vec[pos];
 	else
-		throw MyException("error index");
-} //-------------------------------------------------------------------------
+		throw MyException("Wrong index");
+} 
 
 template <class T>
 bool TVector<T>::operator==(const TVector &v) const
@@ -105,13 +105,13 @@ bool TVector<T>::operator==(const TVector &v) const
         return 0;
 			}
 	return 1;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T> 
 bool TVector<T>::operator!=(const TVector &v) const
 {
   return !(*this == v);
-} //-------------------------------------------------------------------------
+} 
 
 template <class T> 
 TVector<T>& TVector<T>::operator=(const TVector &v)
@@ -125,7 +125,7 @@ TVector<T>& TVector<T>::operator=(const TVector &v)
 			vec[i] = v.vec[i];
 	}
 	return *this;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TVector<T> TVector<T>::operator+(const T &val)
@@ -134,7 +134,7 @@ TVector<T> TVector<T>::operator+(const T &val)
 	for (int i = 0; i < size; i++)
 		res.vec[i] += val;
 	return res;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TVector<T> TVector<T>::operator-(const T &val)
@@ -143,7 +143,7 @@ TVector<T> TVector<T>::operator-(const T &val)
 	for (int i = 0; i < size; i++)
 		res.vec[i] -= val;
 	return res;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TVector<T> TVector<T>::operator*(const T &val)
@@ -152,40 +152,40 @@ TVector<T> TVector<T>::operator*(const T &val)
 	for (int i = 0; i < size; i++)
 		res.vec[i] = res.vec[i] * val;
 	return res;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TVector<T> TVector<T>::operator+(const TVector<T> &v)
 {
   if (size != v.size)
-    throw MyException("error size operand");
+    throw MyException("Wrong size operand");
   TVector<T> rez(*this);
   for (int i = 0; i < size; i++)
     rez[i] = (*this)[i] + v.vec[i];
   return rez;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 TVector<T> TVector<T>::operator-(const TVector<T> &v)
 {
   if (size != v.size)
-    throw MyException("error size operand");
+    throw MyException("Wrong size operand");
   TVector<T> rez(*this);
   for (int i = 0; i < size; i++)
     rez[i] = (*this)[i] - v.vec[i];
   return rez;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T> 
 T TVector<T>::operator*(const TVector<T> &v)
 {
   if (size != v.size)
-    throw MyException("error size operand");
+    throw MyException("Wrong size operand");
   int temp = 0;
   for (int i = 0; i < size; i++)
     temp += vec[i] * v.vec[i];
   return temp;
-} //-------------------------------------------------------------------------
+} 
 
 template <class T>
 istream& operator>>(istream &in, TVector<T> &v)
@@ -193,7 +193,7 @@ istream& operator>>(istream &in, TVector<T> &v)
 	for (int i = 0; i < v.size; i++)
 		in >> v.vec[i];
 	return in;
-}//-------------------------------------------------------------------------
+}
 
 template <class T>
 ostream& operator<<(ostream &out, const TVector<T> &v)
@@ -201,5 +201,5 @@ ostream& operator<<(ostream &out, const TVector<T> &v)
 	for (int i = 0; i < v.size; i++)
 		out << v.vec[i] << ' ';
 	return out;
-}//-------------------------------------------------------------------------
+}
 
