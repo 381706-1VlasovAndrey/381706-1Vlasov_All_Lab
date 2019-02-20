@@ -5,6 +5,13 @@ project(${PROJECT_NAME})
 
 set(ExceptionLib ExceptionLib)
 
+set(Vector Vector)
+set(VectorLib VectorLib)
+set(VectorTest VectorTest)
+
+set(Matrix Matrix)
+set(MatrixLib MatrixLib)
+set(MatrixTest MatrixTest)
 
 set(Stack Stack)
 set(StackLib StackLib)
@@ -39,6 +46,16 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/QueueLib)
 add_subdirectory(Queue)
 add_subdirectory(QueueLib)
 add_subdirectory(QueueTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/VectorLib)
+add_subdirectory(Vector)
+add_subdirectory(VectorLib)
+add_subdirectory(VectorTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/MatrixLib)
+add_subdirectory(Matrix)
+add_subdirectory(MatrixLib)
+add_subdirectory(MatrixTest)
 
 
 
