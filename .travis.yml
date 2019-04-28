@@ -8,9 +8,15 @@ before_script:
 script:
   - cmake ../381706-1Vlasov_All_Lab
   - make -j
-  - ./VectorTest/VectorTest
-  - ./MatrixTest/MatrixTest
   - ./StackTest/StackTest
   - ./QueueTest/QueueTest
+  - ./VectorTest/VectorTest
+  - ./MatrixTest/MatrixTest
+  - ./ArrListTest/ArrListTest
+  - ./ListTest/ListTest
+  - ./StackListTest/StackListTest
+  - ./MultiStackTest/MultiStackTest
+  - ./PolynomialTest/PolynomialTest
+  - ./PolishTest/PolishTest
 notifications:
   email: false
